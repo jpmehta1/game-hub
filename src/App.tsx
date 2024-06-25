@@ -1,11 +1,20 @@
 import { useState } from 'react'
 import './App.css'
 import React from 'react';
-import { Button, ButtonGroup } from '@chakra-ui/react'
-const App: React.FC = () => {
-  return (
-    <Button colorScheme='blue'>Button</Button>
-  );
-};
+import { Button, ButtonGroup ,Grid, GridItem} from '@chakra-ui/react'
+
+
+function App(){
+return <Grid templateAreas={{
+  base :'"nav"   "main"',
+  lg: '" nav nav" "aside main"'
+
+}}>
+<GridItem  area = 'nav' bg = 'coral'>Nav</GridItem>
+<GridItem  area = 'aside' bg = 'gold'>Aside</GridItem>
+<GridItem  area = 'main' bg = 'dodgerblue'>Main</GridItem>
+</Grid>
+
+}
 
 export default App;
