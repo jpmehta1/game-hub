@@ -6,6 +6,7 @@
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
+    "allowSyntheticDefaultImports": true, // Add this line
     "skipLibCheck": true,
 
     /* Bundler mode */
