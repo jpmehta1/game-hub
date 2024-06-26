@@ -29,6 +29,7 @@ const useGames = () => {
      //empty array of games
     const [games, setGames] = useState<Game[]>([]);
     const [error, setError] = useState("");
+    const [isLoading,setLoading] = useState(false)
   
     //these hooks take arrow functions
 
@@ -37,24 +38,27 @@ const useGames = () => {
 
     useEffect(() => {
         const controller = new AbortController()
+
+        setLoading(true)
       apiClient
       //get the games in the form of <FetchGames>
         .get<FetchGames>("/games",{signal:controller.signal })
         //then you set the games empty array to the response.data.results
-        .then((res) => setGames(res.data.results))
-       
+        .then((res) => {setGames(res.data.results) 
+        setLoading(false)})
         //error handling
         .catch((error) => {
         if (error instanceof CanceledError) return;
         //set the empty error message to the actual error message
           setError(error.message);
+          setLoading(false)
         });
         //unmount - cleanup done
         return () => {controller.abort}
         //mount - dependencies played
     },[]);
 
-    return {games,error}
+    return {games,error,isLoading}
 
 }
 
