@@ -4,9 +4,10 @@ import apiClient from "../services/api-client";
 
 
 //list out what a game's properties should be looking at the RAWG api
-interface Game {
+export interface Game {
     name: string;
     id: number;
+    background_image: string
   }
   
   //list out what you want to fetch
