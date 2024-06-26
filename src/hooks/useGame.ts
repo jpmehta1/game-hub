@@ -16,6 +16,7 @@ export interface Game {
     id: number;
     background_image: string,
     parent_platforms: {platform:Platform}[]
+    metacritic: number
   }
   
   //list out what you want to fetch
