@@ -10,7 +10,7 @@ const GameGrid = () => {
 
     //destructure the useGames () custom hook into games and error, see custom hooks don't always have
     //to return functions,
-  const {games,error,isLoading} = useGames()
+  const {data,error,isLoading} = useGames()
   const skeletons = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
 
   //the columns thing is nice, you can render different number of columns based on the size of the device
@@ -21,7 +21,7 @@ const GameGrid = () => {
       {error && <Text> {error}</Text>}
       <SimpleGrid columns={{sm: 1,md:2,lg:3,xl:5}} padding = '10px'spacing =  {10}>
         {isLoading && skeletons.map(skeleton => <GameCardContainer><CardSkeleton key = {skeleton}/></GameCardContainer> )}
-        {games.map((game) => (
+        {data.map((game) => (
          <GameCardContainer>
         <GameCard key = {game.id} games = {game}></GameCard>
          </GameCardContainer> 
